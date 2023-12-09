@@ -1,0 +1,258 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+.container {
+   width: 100%;
+   height: 100%;
+   padding-left: 150px;
+   padding-right: 300px;
+   padding-top: 12px;
+   padding-bottom: 12px;
+   background: white;
+   box-shadow: 0px 1px 0px #E5E5E5;
+   justify-content: space-between;
+   align-items: center;
+   display: flex;
+}
+
+.location {
+   justify-content: flex-start;
+   align-items: center;
+   gap: -2px;
+   display: flex;
+   margin-left: 20px; 
+}
+
+.icon-container {
+   display: inline-flex;
+   align-items: center;
+   gap: 2px;
+}
+
+.user-icon-map {
+   font-size: 18px;
+   color: #666666;
+   object-fit: contain;
+   margin-left: 12.5px;
+   text-decoration: none;
+}
+
+.location-text {
+   color: #666666;
+   font-size: 12px;
+   font-family: Poppins;
+   font-weight: 400;
+   line-height: 15.60px;
+   word-wrap: break-word;
+}
+
+.language {
+   align-items: center;
+   padding-left: 10px;
+   padding-right: 10px;
+   gap: 10px;
+   display: flex;
+   word-wrap: break-word;
+   margin-left: auto;
+}
+
+.language-item {
+   justify-content: flex-start;
+   align-items: center;
+   gap: 6px;
+   display: flex;
+}
+
+.language-text {
+   text-align: center;
+   color: #666666;
+   font-size: 12px;
+   font-family: Poppins;
+   font-weight: 400;
+   line-height: 15.60px;
+   word-wrap: break-word;
+}
+
+.arrow {
+   width: 15px;
+   height: 0px;
+   transform: rotate(90deg);
+   transform-origin: 0 0;
+   border: 1px #E6E6E6 solid;
+}
+
+.signin-container {
+   justify-content: flex-start;
+   align-items: flex-start;
+   gap: 4px;
+   display: flex;
+}
+
+.signin-text,
+.signup-text,
+.slash {
+   color: #666666;
+   font-size: 12px;
+   font-family: Poppins;
+   font-weight: 400;
+   line-height: 15.60px;
+   word-wrap: break-word;
+}
+
+/*--------------------navigation bar-------------------*/
+
+.navbar {
+   width: 100%;
+   height: 100%;
+   padding-left: 37%; 
+   padding-right: 37%;
+   padding-top: 16px;
+   padding-bottom: 16px;
+   background: #333333;
+   justify-content: space-between;
+   align-items: center;
+   display: flex;
+   box-shadow: 0px 10px 15px rgba(0, 0, 0, .8);
+}
+
+
+.navbar-items {
+   justify-content: center;
+   align-items: flex-start;
+   gap: 52px;
+   display: flex;
+}
+
+.nav-item {
+   justify-content: flex-start;
+   align-items: center;
+   gap: 4px;
+   display: flex;
+}
+
+.nav-text {
+   color: white;
+   font-size: 14px;
+   font-family: Poppins;
+   font-weight: 500;
+   line-height: 21px;
+   word-wrap: break-word;
+   transition: color 0.3s; /* Add a smooth transition for color change */
+}
+
+.nav-item:hover .nav-text {
+   color: white; /* Change the color when hovering */
+}
+
+.nav-item.active .nav-text {
+   color: #0079dd; /* Change the color for the active tab */
+}
+
+.nav-link {
+   text-decoration: none;
+}
+
+.arrow {
+   width: 16px;
+   height: 16px;
+   padding-left: 3.33px;
+   padding-right: 3.33px;
+   transform: rotate(180deg);
+   transform-origin: 0 0;
+   justify-content: center;
+   align-items: center;
+   display: flex;
+}
+
+.arrow-line {
+   width: 9.33px;
+   height: 4.67px;
+   border: 1.50px white solid;
+}
+
+.nav-item .nav-text {
+   color: #999999;
+}
+
+.nav-item .arrow-line {
+   border-color: #999999;
+}
+
+/*---------------------HEADER 1 W/ICON------------------------*/
+
+body {
+   margin: 0;
+}
+
+.header-container {
+   width: 100%;
+   height: 100%;
+   padding-top: 27.50px;
+   padding-bottom: 27.50px;
+   padding-left: 20px;
+   padding-right: 1278px;
+   justify-content: flex-start;
+   align-items: center;
+   display: flex;
+}
+
+.logo-container {
+   gap: 10px;
+   display: flex;
+   align-items: center;
+}
+
+.user-icon-person {
+   text-decoration: none;
+   color: #31a6f8;
+}
+
+.brand-icon {
+   display: flex;
+   align-items: center;
+}
+
+.brand-name {
+   color: #002603;
+   font-size: 50px;
+   font-family: Poppins;
+   font-weight: 500;
+   line-height: 38px;
+   text-align: justify;
+   white-space: nowrap;
+}
+
+/*---------------icon-----------------*/
+
+.user-account-text {
+   font-size: 20px;
+   font-family: Poppins;
+   font-weight: 400;
+   line-height: 20px;
+   display: inline-flex;
+   align-items: center;
+   margin-left: 780px; 
+   white-space: nowrap;
+}
+
+.ri-user-fill {
+   color: #31a6f8;
+   font-size: 80px;
+   margin-right: 10px;
+}
+
+.ri-t-shirt-fill {
+   background-color: #0079dd;
+   font-size: 40px;
+   color: #ffffff;
+   border-radius: 50%;
+   width: 60px;
+   height: 60px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-left: 150px;
+}
