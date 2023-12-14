@@ -256,3 +256,119 @@ body {
    justify-content: center;
    margin-left: 150px;
 }
+
+
+/* Basic styling for better presentation */
+
+.contact-box {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0px 20px;
+  margin: 120px;
+  max-width: 300px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.message-box {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 20px auto;
+  width: 948px;
+  height: 507px;
+  text-align: center;
+}
+
+.message-box input,
+.message-box textarea,
+.message-box button {
+  margin-bottom: 10px;
+}
+
+.message-box {
+   
+   border: 1px solid #ccc;
+   border-radius: 10px;
+   margin-top: -400px;
+   margin-right: 400px;
+   text-align: center;
+
+
+   max-width: 800px; /* Increase the maximum width */
+   text-align: center;
+ }
+
+ .message-box {
+   
+   display: flex;
+   border-radius: 10px;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+ }
+
+ .contact-box i {
+   font-size: 100px;
+   margin-bottom: 10px;
+ }
+
+ .contact-box a {
+   text-decoration: none; /* Remove underline for links */
+   color: inherit; /* Use the default text color */
+ }
+ 
+ .ri-map-pin-line,
+ .ri-mail-line,
+ .ri-phone-line {
+   color: #2596be;
+ }
+
+ .button {
+   display: inline-flex;
+   padding: 16px 40px;
+   justify-content: 20px;
+   gap: 16px;
+ }
+
+ .oval-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ /* Styles for the oval shape */
+ .oval {
+   width: 10%;
+  height: 8%;
+  background: #D9D9D9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 34px;
+  display: flex;
+  margin-right: 250px;
+  margin-bottom: 990px;
+  margin-top: -1430px;
+  position: absolute;
+  justify-content: flex-start;
+ } 
+ 
+ /* Styles for the icon */
+ .icon {
+   margin-right: 5px; /* Adjust margin as needed */
+   font-size: 40px;
+   text-align: center;
+   margin-left: 60px;
+   
+   
+   
+ }
+ 
+ /* Styles for the text */
+ .text {
+   flex: 1;
+   font-size: 10px;
+   text-align: center;
+   margin-left: 50px;
+   
+  
+ }

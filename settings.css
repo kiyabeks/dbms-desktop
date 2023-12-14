@@ -257,3 +257,154 @@ body {
    justify-content: center;
    margin-left: 150px;
 }
+
+/* Box 1 style */
+.box-1 {
+   width: 250px;
+   height: 400px;
+   background-color: #ffffff;
+   border: 2px solid #c4c4c4;
+   margin-top: 50px;
+   margin-left: 500px;
+ }
+ 
+ /* Box 2 style */
+ .box-2 {
+   width: 250px;
+   height: 400px;
+   background-color: #ffffff;
+   border: 2px solid #c4c4c4;
+   margin-top: -400px;
+   margin-left: 1000px;
+   
+ }
+
+ .Switch-account {
+   width: 200px;
+   height: 50px;
+   background-color: #ffffff;
+   border: 2px solid #c4c4c4;
+   margin-top: 30px;
+   margin-left: 775px;
+   
+ }
+ 
+ /* Small box 2 style */
+ .Log-out {
+   width: 200px;
+   height: 50px;
+   background-color: #ffffff;
+   border: 2px solid #c4c4c4; 
+   margin-top: 25px;
+   margin-left: 775px;
+   
+ }
+
+ .Switch-account,
+ .Log-out {
+  width: 200px;
+  height: 50px;
+  text-align: center; 
+  line-height: 50px; 
+  
+  margin-top: 30px; 
+}
+
+
+/*-----------------------box 1------------------*/
+.box-1 {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+ }
+ 
+ .box-1 i {
+   font-size: 100px;
+   margin-bottom: 10px;
+ }
+
+ .box-1 a {
+   text-decoration: none; /* Remove underline for links */
+   color: inherit; /* Use the default text color */
+ }
+ 
+ .box-1 i {
+   font-size: 100px;
+   margin-bottom: 100px;
+ }
+ 
+ .box-1 span {
+   display: block; /* Ensures each text is on a new line */
+ }
+
+ .box-2 {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+ }
+ 
+ .box-2 i {
+   font-size: 100px;
+   margin-bottom: 10px;
+ }
+
+ .box-2 a {
+   text-decoration: none; /* Remove underline for links */
+   color: inherit; /* Use the default text color */
+ }
+ 
+ .box-2 i {
+   font-size: 100px;
+   margin-bottom: 100px;
+ }
+ 
+ .box-2 span {
+   display: block; /* Ensures each text is on a new line */
+ }
+ 
+
+ .oval-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ /* Styles for the oval shape */
+ .oval {
+   width: 10%;
+  height: 8%;
+  background: #D9D9D9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 34px;
+  display: flex;
+  margin-right: 250px;
+  margin-bottom: 990px;
+  margin-top: -1430px;
+  position: absolute;
+  justify-content: flex-start;
+ } 
+ 
+ /* Styles for the icon */
+ .icon {
+   margin-right: 5px; /* Adjust margin as needed */
+   font-size: 40px;
+   text-align: center;
+   margin-left: 60px;
+   
+   
+   
+ }
+ 
+ /* Styles for the text */
+ .text {
+   flex: 1;
+   font-size: 10px;
+   text-align: center;
+   margin-left: 50px;
+   
+  
+ }
