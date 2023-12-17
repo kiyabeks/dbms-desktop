@@ -74,12 +74,102 @@
     </div>
     <!---------------------------BODY---------------------->
 
-    <section class="notiff">
-      <div class="notification" id="myNotification">
-        This is a notification!
+    <section class="notifii">
+      <div class="notifii-container">
+        <h2>Notifications <span>4</span></h2>
       </div>
+    </section>
 
-      <button onclick="showNotification()">Show Notification</button>
+    <section class="notiff">
+      <div class="notif-container">
+        <div class="icon" onclick="toggleNotifi()"></div>
+        <div class="notification-container" onclick="handleNotificationClick()">
+          <div class="notifi-item">
+            <ul class="notification-list">
+              <li
+                class="notification-item"
+                onclick="handleNotificationClick(this)"
+              >
+                <div class="blue-dot"></div>
+                <span>User: John Doe</span>
+                <p>The order is now being processed!</p>
+                <i
+                  class="fas fa-times close-icon"
+                  onclick="closeNotification(event, this)"
+                ></i>
+              </li>
+              <li
+                class="notification-item"
+                onclick="handleNotificationClick(this)"
+              >
+                <div class="blue-dot"></div>
+                <span>User: Amara Toople</span>
+                <p>The order is ready for packaging!</p>
+                <i
+                  class="fas fa-times close-icon"
+                  onclick="closeNotification(event, this)"
+                ></i>
+              </li>
+              <li
+                class="notification-item"
+                onclick="handleNotificationClick(this)"
+              >
+                <div class="blue-dot"></div>
+                <span>User: Henry Lee</span>
+                <p>The order is ready for delivery!</p>
+                <i
+                  class="fas fa-times close-icon"
+                  onclick="closeNotification(event, this)"
+                ></i>
+              </li>
+              <li
+                class="notification-item"
+                onclick="handleNotificationClick(this)"
+              >
+                <div class="blue-dot"></div>
+                <span>User: Sean Kingston</span>
+                <p>The order is for pending transaction!</p>
+                <i
+                  class="fas fa-times close-icon"
+                  onclick="closeNotification(event, this)"
+                ></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function handleNotificationClick(item) {
+        // Add your notification click logic here
+        alert("You clicked a notification: " + item.innerText.trim());
+      }
+
+      function closeNotification(event, closeIcon) {
+        // Prevent the click event from propagating to the notification item
+        event.stopPropagation();
+
+        // Remove the notification item from the list
+        const notificationItem = closeIcon.closest(".notification-item");
+        notificationItem.parentNode.removeChild(notificationItem);
+
+        // Add your additional close notification logic here
+        alert("Notification closed!");
+      }
+    </script>
+
+    <section class="sec">
+      <div class="oval-container">
+        <div class="oval active">
+          <div class="icon">
+            <a href="OrderedQueue.html" class="orderico"><i class="ri-send-plane-2-fill"></i></div>
+            <p class="ordertext">Ordered Queue</p>
+            </div>
+            <div class="text">
+          </div>
+       </div>
+      </div>
     </section>
   </body>
 </html>

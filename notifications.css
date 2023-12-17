@@ -257,18 +257,136 @@
     margin-left: 150px;
  }
 
- .notification {
-   background-color: #4CAF50;
-   color: #fff;
-   padding: 15px;
-   border-radius: 5px;
-   display: none;
-   position: fixed;
-   top: 20px;
-   right: 20px;
-   z-index: 1;
+ .notifii-container {
+   width: 80%;
+   max-width: 800px;
+   background-color: #f9f9f9;
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   margin-left: 500px;
+   margin-top: 50px;
+   line-height: 40px;
+   text-align: center;
  }
 
- .show {
-   display: block;
+ .notif-container {
+   width: 80%;
+   max-width: 800px;
+   background-color: #f9f9f9;
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   margin-left: 500px;
+   margin-top: 50px;
  }
+
+
+ .notifii-container h2 span {
+	color: #f00;
+}
+
+ .notiff {
+   display: grid;
+   margin-top: 20px;
+   text-align: left;
+   line-height: 40px;
+ }
+
+ .h2 {
+   margin-top: 20px;
+ }
+
+ .notification-list {
+   list-style: none;
+   padding: 0;
+ }
+
+ .notification-item {
+   position: relative;
+   margin-bottom: 10px;
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   cursor: pointer;
+ }
+
+ .blue-dot {
+   position: absolute;
+   top: 50%;
+   left: -5px;
+   background-color: blue;
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   transform: translateY(-50%);
+ }
+
+ .close-icon {
+   position: absolute;
+   top: 5px;
+   right: 5px;
+   cursor: pointer;
+ }
+
+/*---------------ORDER QUEUE-----------------*/
+
+ .ri-mail-line,
+ .ri-phone-line,
+ .ri-map-pin-2-line {
+   color: #2596be;
+   font-size: 55px;
+ }
+ 
+  
+  .oval-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Styles for the oval shape */
+  .oval {
+    width: 10%;
+   height: 8%;
+   background: #ffffff;
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   border-radius: 34px;
+   display: flex;
+   margin-bottom: 1650px;
+   margin-left: 700px;
+   position: absolute;
+   justify-content: flex-start;
+    transition: color .3s;
+  } 
+  
+  /* Styles for the icon */
+  .icon {
+    margin-right: 5px;
+    font-size: 40px;
+    text-align: center;
+    margin-left: 10px;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+  
+ .ri-send-plane-2-fill{
+    font-size: 40px;
+    text-decoration: none;
+ }
+ 
+ .orderico{
+    text-decoration: none;
+    color: #08aee5;
+ }
+ 
+ .ordertext{
+    margin-right: 5px; /* Adjust margin as needed */
+    font-size: 20px;
+    text-align: center;
+    margin-left: 5px;
+    text-decoration: none;
+    margin-top: 30px;
+    color: black;
+ }
+

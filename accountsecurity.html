@@ -87,15 +87,54 @@
     <section class="account-info">
       <h2>Account Information</h2>
       <p>Username: Jack Mehoff</p>
-      <p>Email: john.doe23@example.com</p>
+      <p>Email: jackmeoffpls@example.com</p>
     </div>
   
     <div id="security">
       <h2>Security Settings</h2>
       <p>Password: ********</p>
-      <button class="btn" type="submit">Change Password</button>
+      <form class="password-form">
+        <label for="currentPassword">Current Password:</label>
+        <input type="password" id="currentPassword" required><br>
+      
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" required><br>
+      
+        <label for="confirmPassword">Confirm New Password:</label>
+        <input type="password" id="confirmPassword" required><br>
+
+        <button class="btn" type="button" onclick="changePassword()">Change Password</button>
+        <p id="result"></p>
     </div>
   </section>
 
+  <script>
+    function changePassword() {
+      var currentPassword = document.getElementById('currentPassword').value;
+      var newPassword = document.getElementById('newPassword').value;
+      var confirmPassword = document.getElementById('confirmPassword').value;
+      var resultMessage = document.getElementById('result');
+
+      // Add your password change logic here
+      // For simplicity, let's just check if the new password matches the confirmation
+
+      if (newPassword === confirmPassword) {
+        // Passwords match, you can proceed with the password change logic here
+
+        // For demonstration purposes, let's just display a success message
+        resultMessage.textContent = 'Password changed successfully!';
+        resultMessage.style.color = 'green';
+      } else {
+        // Passwords do not match, display an error message
+        resultMessage.textContent = 'Passwords do not match!';
+        resultMessage.style.color = 'red';
+      }
+
+      // Clear input fields after processing
+      document.getElementById('currentPassword').value = '';
+      document.getElementById('newPassword').value = '';
+      document.getElementById('confirmPassword').value = '';
+    }
+  </script>
   </body>
 </html>

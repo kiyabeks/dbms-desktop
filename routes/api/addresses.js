@@ -230,43 +230,6 @@ router.put('/user-update', (req, res) => {
     }
 });
 
-// CHANGE PASSWORD
-
-router.put('/change-password', (req, res) => {
-    const token = req.headers.authorization.split(' ')[1];
-    if (!token) {
-        res.status(200).json({ success: false, msg: 'Error, Token was not found' });
-    }
-
-    try {
-        const decodedToken = jwt.verify(token, process.env.SECRET_TOKEN);
-        const userAccountId = decodedToken.data['accountid'];
-
-        const { currentPassword, newPassword } = req.body;
-
-        if (!currentPassword || !newPassword) {
-            return res.status(400).json({ error: 'Missing required fields' });
-        }
-
-        // Check if the current password is correct
-        // You should have your own logic to check the current password against the stored hashed password
-
-        // Update the password
-        const updatePasswordQuery = 'UPDATE users SET password = ? WHERE accountid = ?';
-        // You should hash the newPassword before updating the database
-        const hashedNewPassword = hashFunction(newPassword); // Implement your hashing function
-        dbConn.query(updatePasswordQuery, [hashedNewPassword, userAccountId], function (updateError, results, fields) {
-            if (updateError) {
-                console.error(updateError);
-                return res.status(500).json({ error: 'Internal Server Error' });
-            }
-            res.status(200).json({ success: true, msg: 'Password changed successfully' });
-        });
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
 
 
 
