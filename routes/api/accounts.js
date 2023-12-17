@@ -1,90 +1,311 @@
 const express = require('express');
 const router = express.Router();
-const databaseConn = require('../../config/database.js');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const dbConn = require('../../config/database');
 
-// -----------------------------------------------------------Register
-router.post('/register', (req, res) => {
-   const { username, email, password } = req.body;
+// /signup
+router.post('/signup', async (req, res, next) => {
+    const username = req.body.username;
+    const email = req.body.email;
+    const password = req.body.password;
+    const isAdmin = req.body.isAdmin || 0; // Default to 0 if isAdmin is not provided
 
-   if (!username || !email || !password) {
-      return res.status(400).json({ msg: 'Please provide username, email, and password' });
-   }
+    try {
+        // Hash the password
+        const hashedPassword = await bcrypt.hash(password, 10);
 
-   const sqlQuery = `INSERT INTO authentication (username, email, password) VALUES ('${username}', '${email}', '${password}')`;
+        const sqlQuery = `INSERT INTO authentication (username, email, password, isAdmin) VALUES (?, ?, ?, ?)`;
+        dbConn.query(sqlQuery, [username, email, hashedPassword, isAdmin], function (error, results) {
+            if (error) {
+                console.log(error);
+                return res.status(500).json({ success: false, message: 'Failed to register user' });
+            }
 
-   databaseConn.query(sqlQuery, (error, results, fields) => {
-      if (error) {
-         console.error('Registration error:', error);
-         res.status(500).json({ message: 'Registration failed' });
-      } else {
-         res.status(200).json({ message: 'Registration successful' });
-      }
-   });
+            const userId = results.insertId;
+            res.status(200).json({ success: true, userId: userId });
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
 });
 
 
-// -----------------------------------------------------------------------Login
-router.post('/login', (req, res) => {
-   const { username, password } = req.body;
 
-   if (!username || !password) {
-      return res.status(400).json({ msg: 'Please provide both username and password' });
-   }
+// User Login
+router.post('/login', (req, res, next) => {
+    const email = req.body.email;
+    const password = req.body.password;
 
-   const sqlQuery = `SELECT * FROM authentication WHERE username = '${username}' AND password = '${password}'`;
+    try {
+        const sqlQuery = `SELECT * FROM authentication WHERE email = ?`;
+        dbConn.query(sqlQuery, [email], async function (error, results) {
+            if (error) {
+                console.log(error);
+                return res.status(500).json({ success: false, message: 'Internal Server Error' });
+            }
 
-   databaseConn.query(sqlQuery, (error, results, fields) => {
-      if (error) {
-         console.error('Login error:', error);
-         return res.status(500).json({ message: 'Login failed' });
-      }
+            if (results.length === 0) {
+                return res.status(401).json({ success: false, message: 'Invalid email or password' });
+            }
 
-      if (results.length > 0) {
-         
-         res.status(200).json({ message: 'Login successful' });
-      } else {
-       
-         res.status(401).json({ message: 'Invalid credentials' });
-      }
-   });
+            const user = results[0];
+            const isMatch = await bcrypt.compare(password, user.password);
+
+            if (isMatch) {
+                const data = {
+                    username: user.username,
+                    email: user.email,
+                    accountid: user.accountid, // Add accountid to the payload
+                };
+
+                // create token
+                const token = jwt.sign({ data: data }, process.env.SECRET_TOKEN, { expiresIn: '1h' });
+
+                res.status(200).json({ success: true, token: token });
+            } else {
+                res.status(401).json({ success: false, message: 'Invalid email or password' });
+            }
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+});
+
+// Admin Login
+router.post('/admin-login', (req, res, next) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    try {
+        const sqlQuery = `SELECT * FROM authentication WHERE email = ? AND isAdmin = 1`;
+        dbConn.query(sqlQuery, [email], async function (error, results) {
+            if (error) {
+                console.log(error);
+                return res.status(500).json({ success: false, message: 'Internal Server Error' });
+            }
+
+            if (results.length === 0) {
+                return res.status(401).json({ success: false, message: 'Invalid email or password for admin' });
+            }
+
+            const adminUser = results[0];
+            const isMatch = await bcrypt.compare(password, adminUser.password);
+
+            if (isMatch) {
+                const data = {
+                    username: adminUser.username,
+                    email: adminUser.email,
+                    isAdmin: adminUser.isAdmin,
+                };
+
+                // include isAdmin in the token payload
+                const token = jwt.sign({ data: data, isAdmin: adminUser.isAdmin }, process.env.SECRET_TOKEN, { expiresIn: '1h' });
+
+                res.status(200).json({ success: true, token: token });
+            } else {
+                res.status(401).json({ success: false, message: 'Invalid email or password for admin' });
+            }
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
 });
 
 
-// ------------------------------------------------------View all accounts (for demonstration purposes)
-router.get('/view', (req, res) => {
-   const sqlQuery = `SELECT * FROM authentication`;
-   databaseConn.query(sqlQuery, function (error, results, fields){
-      if (error) throw error;
-      res.status(200).json(results);
-   });
+// Admin View Users
+// @routes GET api/authentication/view
+// @desc View Data from the Database
+// @access PUBLIC
+router.get('/admin-view', (req, res) => {
+    const token= req.headers.authorization.split(' ')[1];
+    if (!token)  {
+      res.status(200).json({success: false,msg: 'Error, Token was not found'});
+    }
+
+  const decodedtoken = jwt.verify(token,process.env.SECRET_TOKEN);
+
+  console.log(decodedtoken.data['email']);
+    const sqlQuery = 'SELECT * FROM authentication';
+    dbConn.query(sqlQuery, function (error, results, fields) {
+        if (error) {
+            console.error(error);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+        // Exclude sensitive information (e.g., password) before sending the response
+        const sanitizedResults = results.map(user => {
+            const { password, ...userData } = user;
+            return userData;
+        });
+        res.status(200).json(sanitizedResults);
+    });
 });
 
-//-------------------------------------------------------- Update account details
-router.put('/update/:id', (req, res) => {
-   const { username, email, password } = req.body;
-   const accountId = req.params.id;
+// ADMIN UPDATE
+// @routes PUT api/authentication/admin-update/:accountid
+// @desc Update Data in the Database
+// @access PRIVATE (only for admin users)
+router.put('/admin-update/:accountid', async (req, res) => {
+    const token = req.headers.authorization.split(' ')[1];
+    if (!token) {
+        res.status(200).json({ success: false, msg: 'Error, Token was not found' });
+    }
 
-   if (!username || !email || !password) {
-      return res.status(400).json({ msg: 'Please provide username, email, and password' });
-   }
+    try {
+        const decodedToken = jwt.verify(token, process.env.SECRET_TOKEN);
 
-   const sqlQuery = `UPDATE authentication SET username = '${username}', email = '${email}', password = '${password}' WHERE accountId = ${accountId}`;
+        // Check if the user is an admin based on the email
+        const isAdmin = decodedToken.data['email'] === 'Admin1@gmail.com'; // Replace with your admin email
 
-   databaseConn.query(sqlQuery, (error, results, fields) => {
-      if (error) throw error;
-      res.status(200).json(results);
-   });
+        if (!isAdmin) {
+            return res.status(403).json({ success: false, msg: 'Unauthorized access. Admin privileges required.' });
+        }
+
+        console.log(decodedToken.data['email']);
+        const { username, email, password } = req.body;
+        const { accountid } = req.params;
+
+        if (!username || !email || !password) {
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
+
+        // Hash the new password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const sqlQuery = 'UPDATE authentication SET username = ?, email = ?, password = ? WHERE accountid = ?';
+        dbConn.query(sqlQuery, [username, email, hashedPassword, accountid], function (error, results, fields) {
+            if (error) {
+                console.error(error);
+                return res.status(500).json({ error: 'Internal Server Error' });
+            }
+            res.status(200).json(results);
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
-//--------------------------------------------- Delete account
-router.delete('/delete/:id', (req, res) => {
-   const accountId = req.params.id;
-   const sqlQuery = `DELETE FROM authentication WHERE accountId = ${accountId}`;
 
-   databaseConn.query(sqlQuery, (error, results, fields) => {
-      if (error) throw error;
-      res.status(200).json(results);
-   });
+
+
+
+
+// DELETE
+// @routes DELETE api/authentication/delete/:accountid
+// @desc Delete User Account
+// @access PRIVATE (only for admin users)
+router.delete('/delete/:accountid', async (req, res) => {
+    const token = req.headers.authorization.split(' ')[1];
+    if (!token) {
+        res.status(200).json({ success: false, msg: 'Error, Token was not found' });
+    }
+
+    try {
+        const decodedToken = jwt.verify(token, process.env.SECRET_TOKEN);
+
+        // Check if the user is an admin based on the email
+        const isAdmin = decodedToken.data['email'] === 'Admin1@gmail.com'; // Replace with your admin email
+
+        if (!isAdmin) {
+            return res.status(403).json({ success: false, msg: 'Unauthorized access. Admin privileges required.' });
+        }
+
+        console.log(decodedToken.data['email']);
+        const { accountid } = req.params;
+
+        if (!accountid) {
+            return res.status(400).json({ error: 'Missing required parameter: accountid' });
+        }
+
+        const sqlQuery = 'DELETE FROM authentication WHERE accountid = ?';
+        dbConn.query(sqlQuery, [accountid], function (error, results, fields) {
+            if (error) {
+                console.error(error);
+                return res.status(500).json({ error: 'Internal Server Error' });
+            }
+            res.status(200).json(results);
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
+
+
+// View Users
+// @routes GET api/authentication/view
+// @desc View Data from the Database
+// @access PRIVATE
+router.get('/user-view', (req, res) => {
+    const token = req.headers.authorization.split(' ')[1];
+    if (!token) {
+        res.status(200).json({ success: false, msg: 'Error, Token was not found' });
+    }
+
+    const decodedToken = jwt.verify(token, process.env.SECRET_TOKEN);
+
+    console.log(decodedToken.data['email']);
+    const user_email = decodedToken.data['email'];
+
+    const sqlQuery = 'SELECT * FROM authentication WHERE email = ?';
+    dbConn.query(sqlQuery, [user_email], function (error, results, fields) {
+        if (error) {
+            console.error(error);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+
+        // Exclude sensitive information (e.g., password) before sending the response
+        const sanitizedResults = results.map(user => {
+            const { password, ...userData } = user;
+            return userData;
+        });
+
+        res.status(200).json(sanitizedResults);
+    });
+});
+
+// UPDATE
+// @routes PUT api/authentication/update/:accountid
+// @desc Update Data in the Database
+// @access PRIVATE
+router.put('/user-update', async (req, res) => {
+    const token = req.headers.authorization.split(' ')[1];
+    if (!token) {
+        res.status(200).json({ success: false, msg: 'Error, Token was not found' });
+    }
+
+    const decodedToken = jwt.verify(token, process.env.SECRET_TOKEN);
+    const userEmail = decodedToken.data['email'];
+    const userAccountId = decodedToken.data['accountid'];
+
+    const { username, email, password } = req.body;
+
+    if (!username || !email || !password) {
+        return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    // Ensure that the logged-in user is updating their own information
+    if (userEmail !== email) {
+        return res.status(403).json({ error: 'Unauthorized to update this account' });
+    }
+
+    // Hash the new password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const sqlQuery = 'UPDATE authentication SET username = ?, email = ?, password = ? WHERE accountid = ?';
+    dbConn.query(sqlQuery, [username, email, hashedPassword, userAccountId], function (error, results, fields) {
+        if (error) {
+            console.error(error);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+        res.status(200).json(results);
+    });
+});
+
+
 
 module.exports = router;

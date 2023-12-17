@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bridgella's Apperal</title>
-    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="accountsecurity.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -23,9 +23,9 @@
       </div>
       <div class="language">
         <div class="signin-container">
-          <div><a class="signin-text" href="login.html">Sign In</a></div>
+          <div class="signin-text">Sign In</div>
           <div class="slash">/</div>
-          <div><a class="signin-text" href="signup.html">Sign Up</a></div>
+          <div class="signup-text">Sign Up</div>
         </div>
       </div>
     </div>
@@ -72,27 +72,30 @@
         </div>
       </div>
     </div>
-    <div class="wide-image-bar">
-      <img src="images/dikoalamsayo.png" alt="image" />
-    </div>
+    <!---------------------------BODY---------------------->
 
-    <section class="login-section">
-      <div class="login-box">
-        <h2>Login</h2>
-        <form action="/login" method="post">
-          <div class="input-group">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required />
+    <section class="userr">
+      <div class="user-profile">
+          <div class="user-details">
+            <h2>Jack Mehoff</h2>
+            <p>Customer</p>
+           <p>Location: Beverly Hills, Los Angeles, California</p>
           </div>
-          <div class="input-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required />
-          </div>
-          <button type="submit">Login</button>
-        </form>
       </div>
     </section>
 
-    <!---------------------------BODY---------------------->
+    <section class="account-info">
+      <h2>Account Information</h2>
+      <p>Username: Jack Mehoff</p>
+      <p>Email: john.doe23@example.com</p>
+    </div>
+  
+    <div id="security">
+      <h2>Security Settings</h2>
+      <p>Password: ********</p>
+      <button class="btn" type="submit">Change Password</button>
+    </div>
+  </section>
+
   </body>
 </html>

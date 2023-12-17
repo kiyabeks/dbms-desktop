@@ -100,6 +100,7 @@
     font-weight: 400;
     line-height: 15.60px;
     word-wrap: break-word;
+    text-decoration: none;
  }
  
  /*--------------------navigation bar-------------------*/
@@ -257,4 +258,125 @@
     margin-left: 150px;
  }
 
+ 
+
+ 
+ 
+ .oval-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ /* Styles for the oval shape */
+ .oval {
+   width: 10%;
+  height: 8%;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 34px;
+  display: flex;
+  margin-bottom: 230px;
+  margin-left: 700px;
+  position: absolute;
+  justify-content: flex-start;
+   transition: color .3s;
+ } 
+ 
+ /* Styles for the icon */
+ .icon {
+   margin-right: 5px;
+   font-size: 40px;
+   text-align: center;
+   margin-left: 10px;
+   text-decoration: none;
+   margin-top: 20px;
+ }
+ 
+.ri-send-plane-2-fill{
+   font-size: 40px;
+   text-decoration: none;
+}
+
+.orderico{
+   text-decoration: none;
+   color: #08aee5;
+}
+
+.ordertext{
+   margin-right: 5px; /* Adjust margin as needed */
+   font-size: 20px;
+   text-align: center;
+   margin-left: 5px;
+   text-decoration: none;
+   margin-top: 30px;
+   color: black;
+   font-family: Poppins;
+}
+.oval:active{
+   background: #d9d9d9;
+}
+
+.oval.active{
+   background: #d9d9d9;
+}
+
+/*-----------------------------------------------------------------*/
+
+/* Styles for the product list */
+.product-list {
+   margin: 20px;
+   padding: 20px;
+   border: 1px solid #ccc;
+   border-radius: 8px;
+   background-color: #f9f9f9;
+   max-width: 400px;
+   margin: 0 auto;
+ }
+ 
+ .product-list h2 {
+   margin-bottom: 10px;
+   font-size: 18px;
+   color: #333;
+ }
+ 
+ .input-area {
+   display: flex;
+   align-items: center;
+   margin-bottom: 10px;
+ }
+ 
+ .input-area input[type="text"] {
+   padding: 8px;
+   margin-right: 10px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+ }
+ 
+ .input-area button {
+   padding: 8px 12px;
+   border: none;
+   border-radius: 4px;
+   background-color: #007bff;
+   color: #fff;
+   cursor: pointer;
+ }
+ 
+ .input-area button:hover {
+   background-color: #0056b3;
+ }
+ 
+ /* Styles for the ordered queue */
+ #ordered-queue {
+   margin-top: 20px;
+   padding: 0;
+   list-style: decimal inside;
+   display: none; /* Initially hidden */
+ }
+ 
+ #ordered-queue li {
+   margin-bottom: 6px;
+   font-size: 16px;
+   color: #333;
+ }
  

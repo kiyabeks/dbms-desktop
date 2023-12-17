@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bridgella's Apperal</title>
+    <link rel="stylesheet" href="signup.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- start code -->
+    <div class="container">
+      <div class="location">
+        <div class="icon-container">
+          <a href="#" class="user-icon-map"><i class="ri-map-pin-line"></i></a>
+        </div>
+        <div class="location-text">
+          Store Location: Comembo 1216 Makati, Philippines
+        </div>
+      </div>
+      <div class="language">
+        <div class="signin-container">
+          <div><a class="signin-text" href="login.html">Sign In</a></div>
+          <div class="slash">/</div>
+          <div><a class="signin-text" href="signup.html">Sign Up</a></div>
+        </div>
+      </div>
+    </div>
+    <!-------------------------HEADER1 W/ ICON---------------------------------->
+    <div class="header-container">
+      <div class="logo-container">
+        <div class="brand-icon">
+          <i class="ri-t-shirt-fill"></i>
+          <div class="brand-name">Bridgella’s apparel</div>
+        </div>
+        <div class="user-account-text">
+          <i class="ri-user-fill"></i>User Account
+        </div>
+      </div>
+    </div>
+
+    <!----------------------NAVIGATION BAR---------------------------------->
+    <div class="navbar">
+      <div class="navbar-items">
+        <div class="nav-item">
+          <a href="home.html" class="nav-link">
+            <div class="nav-text">Home</div>
+          </a>
+        </div>
+        <div class="nav-item">
+          <a href="products.html" class="nav-link">
+            <div class="nav-text">Products</div>
+          </a>
+        </div>
+        <div class="nav-item">
+          <a href="pages.html" class="nav-link">
+            <div class="nav-text">Pages</div>
+          </a>
+        </div>
+        <div class="nav-item">
+          <a href="contact.html" class="nav-link">
+            <div class="nav-text">Contact us</div>
+          </a>
+        </div>
+        <div class="nav-item">
+          <a href="settings.html" class="nav-link">
+            <div class="nav-text">Settings</div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="wide-image-bar">
+      <img src="images/dikoalamsayo.png" alt="image" />
+    </div>
+
+    <section class="signup-section">
+      <div class="signup-container">
+        <div class="signup-box">
+          <h2>Sign Up</h2>
+          <form action="/signup" method="post">
+            <div class="input-group">
+              <label for="username">Username:</label>
+              <input type="text" id="username" name="username" required />
+            </div>
+            <div class="input-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="input-group">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+            <div class="input-group">
+              <label for="confirm-password">Confirm Password:</label>
+              <input
+                type="password"
+                id="confirm-password"
+                name="confirm-password"
+                required
+              />
+            </div>
+            <button type="submit">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!---------------------------BODY---------------------->
+  </body>
+</html>

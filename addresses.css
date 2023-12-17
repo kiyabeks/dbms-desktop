@@ -257,65 +257,73 @@
     margin-left: 150px;
  }
 
- /* Styles for the wide image bar container */
-.wide-image-bar {
-    width: 100%; /* Set the width to span the entire page */
-    overflow: hidden; /* Hide any overflowing content */
-  }
-  
-  /* Styles for the image inside the wide image bar */
-  .wide-image-bar img {
-    width: 100%; /* Make the image fill the entire width of the container */
-    display: block; /* Ensure the image behaves as a block element */
-  }
-
-  /* Styles for the login box container */
-.login-box {
-    width: 300px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  /* Styles for form elements */
-  .login-box h2 {
-    text-align: center;
-  }
-  
-  .input-group {
-    margin-bottom: 15px;
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .input-group input[type="text"],
-  .input-group input[type="password"] {
-    width: calc(100% - 12px);
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  button[type="submit"] {
-    width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 3px;
-    background-color: #0079dd;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #005fa3;
-  }
-  
-  
+ /* General styles */
+body {
+   font-family: Arial, sans-serif;
+   margin: 0;
+   padding: 0;
+ }
+ 
+ main {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+ }
+ 
+ /* Styles for address form */
+ .address-form, .address-display {
+   width: 400px;
+   padding: 20px;
+   margin: 20px;
+   background-color: #f9f9f9;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   margin-left: 700px;
+ }
+ 
+ .address-form h2, .address-display h2 {
+   text-align: center;
+   margin-bottom: 15px;
+ }
+ 
+ .address-form label {
+   display: block;
+   margin-bottom: 5px;
+ }
+ 
+ .address-form input[type="text"] {
+   width: calc(100% - 10px);
+   padding: 8px;
+   margin-bottom: 10px;
+ }
+ 
+ .address-form button {
+   width: 100%;
+   padding: 10px;
+   border: none;
+   border-radius: 5px;
+   background-color: #0079dd;
+   color: white;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+ }
+ 
+ .address-form button:hover {
+   background-color: #005fa3;
+ }
+ 
+ /* Styles for address display */
+ .address-display ul {
+   list-style: none;
+   padding: 0;
+ }
+ 
+ .address-display li {
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   padding: 10px;
+   margin-bottom: 10px;
+ }
+ 

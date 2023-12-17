@@ -23,9 +23,9 @@
       </div>
       <div class="language">
         <div class="signin-container">
-          <div class="signin-text">Sign In</div>
+          <div><a class="signin-text" href="login.html">Sign In</a></div>
           <div class="slash">/</div>
-          <div class="signup-text">Sign Up</div>
+          <div><a class="signin-text" href="signup.html">Sign Up</a></div>
         </div>
       </div>
     </div>
@@ -55,9 +55,9 @@
             <div class="nav-text">Products</div>
           </a>
         </div>
-        <div class="nav-item active">
-          <a href="OrderedQueue.html" class="nav-link">
-            <div class="nav-text">Ordered Queue</div>
+        <div class="nav-item">
+          <a href="pages.html" class="nav-link">
+            <div class="nav-text">Pages</div>
           </a>
         </div>
         <div class="nav-item">
@@ -73,5 +73,38 @@
       </div>
     </div>
     <!---------------------------BODY---------------------->
+    <section class="sec">
+      <div class="oval-container">
+        <div class="oval active">
+          <div class="icon">
+            <a href="OrderedQueue.html" class="orderico"><i class="ri-send-plane-2-fill"></i></div>
+            <p class="ordertext">Ordered Queue</p>
+          </div>
+          <div class="text">
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="product-section">
+      <div class="product-list">
+        <h2>Product List</h2>
+        <div class="input-area">
+          <input type="text" id="product-input" placeholder="Enter Product Name" />
+          <button onclick="addProduct()">Add Product</button>
+        </div>
+        <ul id="product-ul">
+          <!-- Product items will be added here -->
+        </ul>
+        <button onclick="showOrderedQueue()">Show Ordered Queue</button>
+      </div>
+  
+      <ol id="ordered-queue" class="ordered-queue" style="display: none;">
+        <!-- Ordered queue will be displayed here -->
+      </ol>
+    </section>
+  
+
+
   </body>
 </html>

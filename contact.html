@@ -23,9 +23,9 @@
       </div>
       <div class="language">
         <div class="signin-container">
-          <div class="signin-text">Sign In</div>
+          <div><a class="signin-text" href="login.html">Sign In</a></div>
           <div class="slash">/</div>
-          <div class="signup-text">Sign Up</div>
+          <div><a class="signin-text" href="signup.html">Sign Up</a></div>
         </div>
       </div>
     </div>
@@ -73,69 +73,55 @@
       </div>
     </div>
 
-    <div class="contact-box">
-      <p>
-        <i class="ri-map-pin-line"></i>
-      </p>
+    <!----------------------CONTACT US---------------------------------->
 
-      <p>
-        <strong>Location:</strong> Comembo 1216 Makati, Philippines<br />
-
+<section class="sect">
+  <div class="infoo">
+    <div class="card">
+      <div class="inf">
+        <i class="ri-map-pin-2-line"></i>
+        <p>Comembo 1216 Makati, Philippines</p>
+      </div>
+      <div class="inf">
         <i class="ri-mail-line"></i>
-      </p>
-
-      <p>
-        <strong>Email:</strong> info@bridgellasapparel.com<br />
-
+        <p>info@bridgellasapparel.com</p>
+      </div>
+      <div class="inf"> 
         <i class="ri-phone-line"></i>
-      </p>
-
-      <p><strong>Telephone:</strong> (219) 555-0114 (164) 333-0487</p>
-    </div>
-
-    <!-- Second Box: Introduction and Message Form -->
-    <div class="message-box">
-      <h2>Just Say Hello!</h2>
-      <p>
-        Do you fancy saying hi to me or you want to get started with your print
-        ideas and you need my help? Feel free to contact us.
-      </p>
-
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" placeholder="Your Name" />
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" placeholder="Your Email" />
-
-      <label for="subject">Subject:</label>
-      <input
-        type="text"
-        id="subject"
-        name="subject"
-        placeholder="Message Subject"
-      />
-
-      <label for="message">Message:</label>
-      <textarea
-        id="message"
-        name="message"
-        placeholder="Your Message"
-      ></textarea>
-
-      <button type="button">Send Message</button>
-    </div>
-    <div class="oval-container">
-      <a href="OrderedQueue.html">
-      <div class="oval">
-        <div class="icon">
-          <!-- Your icon goes here -->
-          <i class="ri-play-fill"></i>
-        </div>
-        <div class="text">
-          Order Queued
-        </div>
-      </a>
+        <p>(219) 555-0114 (164) 333-0487</p>
       </div>
     </div>
+    <div class="card2">
+      <div class="inf2">
+        <h2>Just Say Hello!</h2>
+        <p>Some paragraph describing the purpose or content.</p>
+      </div>
+      <form class="dets">
+        <input class="name" type="text" placeholder="Your Name">
+        <input class="email" type="text" placeholder="Your Email"><br>
+        <input class="sub" type="text" placeholder="Subject">
+        <textarea placeholder="Your Message"></textarea> <br>
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+
+      <!----------------------ORDER QUEUE---------------------------------->
+    <section class="sec">
+        <div class="oval-container">
+          <div class="oval active">
+            <div class="icon">
+              <a href="OrderedQueue.html" class="orderico"><i class="ri-send-plane-2-fill"></i></div>
+              <p class="ordertext">Ordered Queue</p>
+            </div>
+            <div class="text">
+            </div>
+          </div>
+        </div>
+      </section>
   </body>
 </html>
