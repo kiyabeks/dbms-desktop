@@ -315,3 +315,64 @@
 .security button:hover {
    background-color: #005fa3;
  }
+
+ /* ORDER QUEUE */
+
+ .ri-mail-line,
+ .ri-phone-line,
+ .ri-map-pin-2-line {
+   color: #2596be;
+   font-size: 55px;
+ }
+ 
+  
+  .oval-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Styles for the oval shape */
+  .oval {
+    width: 10%;
+   height: 8%;
+   background: #ffffff;
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   border-radius: 34px;
+   display: flex;
+   margin-bottom: 1650px;
+   margin-left: 700px;
+   position: absolute;
+   justify-content: flex-start;
+    transition: color .3s;
+  } 
+  
+  /* Styles for the icon */
+  .icon {
+    margin-right: 5px;
+    font-size: 40px;
+    text-align: center;
+    margin-left: 10px;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+  
+ .ri-send-plane-2-fill{
+    font-size: 40px;
+    text-decoration: none;
+ }
+ 
+ .orderico{
+    text-decoration: none;
+    color: #08aee5;
+ }
+ 
+ .ordertext{
+    margin-right: 5px; /* Adjust margin as needed */
+    font-size: 20px;
+    text-align: center;
+    margin-left: 5px;
+    text-decoration: none;
+    margin-top: 30px;
+    color: black;
+ }
